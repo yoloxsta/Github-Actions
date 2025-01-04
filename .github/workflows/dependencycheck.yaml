@@ -27,3 +27,6 @@ jobs:
         run: |
            pwd
            ls -l
+           
+      - name: Git status checking
+        run : git status
