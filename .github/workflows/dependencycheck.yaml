@@ -28,5 +28,7 @@ jobs:
            pwd
            ls -l
            
-      - name: Git status checking
-        run : git status
+      - name: Docker build
+        run : |
+           docker build -t sta .
+           docker images
