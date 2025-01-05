@@ -41,9 +41,10 @@ jobs:
       - name: Push to Dockerhub
         run: docker push yolomurphy/sta:latest
         
-      - name: Set up Trivy
-        run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -
-      - name: Scan Docker image
-        run: |
-          trivy image --severity HIGH,CRITICAL yolomurphy/sta:latest
+      - name: Scan Image
+        uses: anchore/scan-action@v3
+        id: scan
+        with:
+          image: "yolomurphy/sta:latest"
+          fail-build: true
+          output-format: sarif
