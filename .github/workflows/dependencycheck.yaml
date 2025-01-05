@@ -38,6 +38,9 @@ jobs:
         
       - name: Build the Docker image
         run: docker build -t yolomurphy/sta .
+
+      - name: Trivy Scan
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image yolomurphy/sta
     
       - name: Push to Dockerhub
         run: docker push yolomurphy/sta:latest
