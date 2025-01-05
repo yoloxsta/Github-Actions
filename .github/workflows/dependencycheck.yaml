@@ -41,10 +41,9 @@ jobs:
       - name: Push to Dockerhub
         run: docker push yolomurphy/sta:latest
         
-      - name: Scan Image
-        uses: anchore/scan-action@v3
-        id: scan
+      - name: Scan with Clair
+        uses: quay/clair-action@main
         with:
-          image: "yolomurphy/sta:latest"
-          fail-build: true
-          output-format: sarif
+          image-path: yolomurphy/sta:latest
+          format: sarif
+          output: clair_results.sarif
