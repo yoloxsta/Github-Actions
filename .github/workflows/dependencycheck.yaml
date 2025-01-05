@@ -40,3 +40,11 @@ jobs:
         run: docker build -t yolomurphy/sta .
       - name: Push to Dockerhub
         run: docker push yolomurphy/sta:latest
+        
+      - name: Security scan with Trivy
+        uses: aquasecurity/trivy-action@v0.29.0
+        with:
+          image-ref: yolomurphy/sta:latest
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: 1
