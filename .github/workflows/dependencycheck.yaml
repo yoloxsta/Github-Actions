@@ -27,14 +27,12 @@ jobs:
         run: |
            pwd
            ls -l
-      - name: SonarQube Scanner
+
+      - uses: sonarsource/sonarqube-scan-action@master
         env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: 'http://52.90.147.81:9000'
-          SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          npx sonarqube-scanner -X
            
-  
       - uses: actions/checkout@v3
       - name: Login Dockerhub
         env:
