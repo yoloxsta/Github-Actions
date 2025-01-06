@@ -27,6 +27,12 @@ jobs:
         run: |
            pwd
            ls -l
+      - name: SonarQube Scanner
+        env:
+          SONAR_HOST_URL: 'http://52.90.147.81:9000'
+          SONAR_LOGIN: 'sqa_10ffb6d99e2aadb33d04a7a74374089ee9fa1b4a'
+        run: |
+          npx sonarqube-scanner
            
   
       - uses: actions/checkout@v3
