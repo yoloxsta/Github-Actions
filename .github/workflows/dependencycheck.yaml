@@ -32,7 +32,7 @@ jobs:
           SONAR_HOST_URL: 'http://52.90.147.81:9000'
           SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          npx sonarqube-scanner
+          npx sonarqube-scanner -X
            
   
       - uses: actions/checkout@v3
