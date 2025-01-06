@@ -30,7 +30,7 @@ jobs:
       - name: SonarQube Scanner
         env:
           SONAR_HOST_URL: 'http://52.90.147.81:9000'
-          SONAR_LOGIN: 'sqa_10ffb6d99e2aadb33d04a7a74374089ee9fa1b4a'
+          SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
         run: |
           npx sonarqube-scanner
            
